@@ -38,5 +38,65 @@
   		</div>
   	</div>
   </div>
+
+  <script>
+    const player = document.getElementsByClassName('mediaplayer')[0];
+    const audio = player.getElementsByTagName('audio')[0];
+    const btnPlayPause = document.getElementsByClassName('playstate')[0];
+    const btnStop = document.getElementsByClassName('stop')[0];
+    const btnBack = document.getElementsByClassName('back')[0];
+    const btnNext = document.getElementsByClassName('next')[0];
+    const title = document.getElementsByClassName('title')[0];
+    const trackList = ['LA Chill Tour', 'LA Fusion Jam', 'This is it band'];
+    let i = 0;
+
+
+    btnPlayPause.onclick = () => {
+      if(player.classList.contains('play')){
+        audio.pause();
+      }else{
+        audio.play();
+      }
+      player.classList.toggle('play');
+    }
+
+    btnStop.onclick = () => {
+    if(player.classList.contains('play')) {
+      player.classList.remove('play');
+    }
+       audio.currentTime = 0;
+      audio.pause();
+    }
+
+   btnNext.onclick = () => {
+    if(i >= trackList.length -1 ){
+      i = 0;
+    }else {
+      i++;
+    }
+
+    audio.src = `./mp3/${trackList[i]}.mp3`;
+    title.title = trackList[i];
+
+    if (player.classList.contains('play')) {
+      audio.play()
+    }
+   }
+
+
+  btnBack.onclick = () => {
+    if(i <= 0 ) {
+      i = trackList.length - 1
+    }else {
+      i--;
+    }
+    audio.src = `./mp3/${trackList[i]}.mp3`;
+    title.title = trackList[i];
+
+    if (player.classList.contains('play')) {
+      audio.play()
+    }
+  }
+  </script>
 </body>
 </html>

@@ -25,5 +25,92 @@
       <audio src=""></audio>
     </li>
   </ul>
+  <script>
+
+     const piano = document.getElementsByClassName('set')[0];
+  const pianoKeysList = piano.getElementsByTagName('li');
+  const pianoSongList = ['first', 'second', 'third', 'fourth', 'fifth'];
+  let type = 'middle';
+
+  Array.from(pianoKeysList).forEach((key, ind) => {
+    const audio = key.getElementsByTagName('audio')[0];
+
+    document.addEventListener('keydown', (event) => {
+      event.preventDefault();
+
+      if (event.shiftKey) {
+        type = 'lower';
+        piano.classList.add('lower');
+        piano.classList.remove('middle', 'higher');
+      }
+
+      if (event.altKey) {
+        type = 'higher';
+        piano.classList.add('higher');
+        piano.classList.remove('middle', 'lower');
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      type = 'middle';
+      piano.classList.add('middle');
+      piano.classList.remove('higher', 'lower');
+    });
+
+    key.addEventListener('click', () => {
+      audio.src = `./sounds/${type}/${pianoSongList[ind]}.mp3`;
+      audio.play();
+    });
+
+  });
+//     const piano = document.getElementsByClassName('set')[0];
+//     const pianoSongList = ['fifth', 'first', 'fourth', 'second', 'third'];
+//     const pianoKeysList = piano.getElementsByTagName('li');
+
+//     let type;
+
+
+// Array.from(pianoKeysList).forEach((key, ind) =>{
+//   const audio = key.getElementsByTagName('audio')[0];
+
+//   document.addEventListener('keydown', (event) => {
+//     event.preventDefault();
+
+//     if(event.shiftKey) {
+//       type = 'lower';
+//       piano.classList.add('lower');
+//       piano.classList.remove('middle', 'higher');
+//     }
+
+//     if(event.altKey){
+//       type = 'higher';
+//       piano.classList.add('higher');
+//       piano.classList.remove('middle', 'lower');
+//     }
+//   });
+
+//   document.addEventListrner('keyup', (event) => {
+//     type = 'middle';
+//     piano.cliassList.add('middle');
+//     piano.classList.remove('higher', 'lover');
+//   });
+
+//   key.addEventListener('click', () => {
+//     audio.src=`./sounds/${type}/${pianoSongList[ind]}.mp3`;
+//     audio.play();
+//   });
+// });
+
+
+  // for(list of keysList){
+  //   if(piano.classList.contains('middle')){
+  //     const key = list.getElementsByTagName('audio')[0];
+  //     list.onclick = () => console.log(key);
+  //     key.src = `./sounds/middle/${songList[0]}.mp3`;
+  //     // keysList.audio.src = `./sounds/middle/${songList[i]}.mp3`;
+  //   }
+  // }
+
+  </script>
 </body>
 </html>

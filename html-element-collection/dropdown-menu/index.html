@@ -15,5 +15,18 @@
       <li><a href="#">Выйти</a></li>
     </ul>
   </div>
+
+  <script>
+    const memuBtn = document.getElementsByClassName('wrapper-dropdown')[0];
+
+    function open(){
+      if (this.classList.contains('active')) {
+        this.classList.remove('active');
+      } else {
+        this.classList.add('active');
+      }
+    }
+
+  </script>
 </body>
 </html>

@@ -31,5 +31,20 @@
       </div>
     </div>
   </section>
+
+  <script>
+    const photoSrc = ['airmax-jump', 'airmax-on-foot', 'airmax-playground', 'airmax-top-view', 'airmax']; /*массив с изображениями*/
+    const img = document.getElementById('slider'); /*достать элемент из HTML*/
+    let i = 0;
+    img.src =  `i/${photoSrc[i]}.png`
+        setInterval(()=> {
+          img.src =  `i/${photoSrc[i]}.png`;
+          if(i === photoSrc.length) {
+            i = 0;
+          } else {
+            i++;
+          }
+        }, 5000);
+  </script>
 </body>
 </html>
